@@ -7,9 +7,16 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 Category.delete_all
+Venue.delete_all
 
 Category.create! [
     { name: 'Concierto' },
     { name: 'Feria' },
     { name: 'Evento deportivo' },
+]
+
+Venue.create! [
+    {name: 'Estadio San Carlos', address: 'San Carlos de Apoquindo 2200', capacity: 15000},
+    {name: 'Estadio Nacional', address: 'Avenida Grecia s/n', capacity: 10000},
+    {name: 'Parque Intercomunal de la Reina', address: 'Avenida Francisco de Bilbao 8105', capacity: 35000}
 ]
