@@ -12,13 +12,32 @@ class CategoriesController < ApplicationController
         @events = @category.events
     end
 
+    def edit
+        @category = Category.find params[:id]
+    end
+
     def create
         @category = Category.new category_params
         if @category.save
             redirect_to @category, notice: 'Categoría creada con éxito'
         else
-            redirect_to new_category_path, alert: 'No ha sido posible crear la categoría'
+            render 'new'
         end
+    end
+
+    def update
+        @category = Category.find params[:id]
+        if @category.update category_params
+            redirect_to @category, notice: 'Categoría actualizada con éxito'
+        else
+            render 'edit'
+        end
+    end
+
+    def destroy
+        @category = Category.find params[:id]
+        @category.destroy
+        redirect_to categories_path
     end
 
     private
