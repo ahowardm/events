@@ -1,0 +1,8 @@
+<div class="container">
+    <%= form_with model: @venue do |f| %>
+        <%= f.text_field :name, placeholder: 'Nombre' %>
+        <%= f.text_field :address, placeholder: 'Dirección' %>
+        <%= f.number_field :capacity, placeholder: 'Capacidad' %>
+        <%= f.submit 'Crear' %>
+    <% end %>
+</div>

@@ -5,7 +5,12 @@
 <div class="container">
     <ul>
         <% @venues.each do |venue| %>
-            <li><%= link_to venue.name, venue %></li>
+            <li><%= link_to venue.name, venue %> -- <%= link_to 'Editar', edit_venue_path(venue) %> | <%= link_to 'Eliminar', venue, data: {turbo_method: :delete, turbo_confirm: 'Estás seguro?'} %></li>
         <% end %>
     </ul>
+</div>
+<div class="container">
+    <div class="row">
+    <%= link_to 'Nueva', new_venue_path, class: 'col-md-4 offset-md-2' %>
+    </div>
 </div>
