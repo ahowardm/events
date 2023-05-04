@@ -5,7 +5,13 @@
 <div class="container">
     <ul>
         <% @events.each do |event| %>
-            <li><%= link_to event.name, event %> - <%= event.venue.name %></li>
+            <li><%= link_to event.name, event %> | <%= link_to 'Editar', edit_event_path(event) %> | <%= link_to 'Eliminar', event, data: {turbo_method: :delete, turbo_confirm: 'Estás seguro?'} %></li>
         <% end %>
     </ul>
+</div>
+
+<div class="container">
+    <div class="row">
+    <%= link_to 'Nuevo', new_event_path, class: 'col-md-4 offset-md-2' %>
+    </div>
 </div>

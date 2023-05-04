@@ -1,0 +1,9 @@
+<div class="container">
+    <%= form_with model: @event do |f| %>
+        <%= f.text_field :name %>
+        <%= f.select :venue_id, Venue.all.map {|v| [v.name, v.id]} %>
+        <%= f.select :category_id, Category.all.map {|v| [v.name, v.id]} %>
+        <%= f.date_field :date %>
+        <%= f.submit 'Crear' %>
+    <% end %>
+</div>
