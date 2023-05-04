@@ -3,11 +3,9 @@
 </div>
 
 <div class="container">
-    <ul>
-        <% @events.each do |event| %>
-            <li><%= link_to event.name, event %> | <%= link_to 'Editar', edit_event_path(event) %> | <%= link_to 'Eliminar', event, data: {turbo_method: :delete, turbo_confirm: 'Estás seguro?'} %></li>
-        <% end %>
-    </ul>
+    <div class="row">
+        <%= render partial: 'event', collection: @events %>
+    </div>
 </div>
 
 <div class="container">
