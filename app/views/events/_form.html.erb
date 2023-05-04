@@ -1,9 +1,19 @@
 <div class="container">
     <%= form_with model: @event do |f| %>
-        <%= f.text_field :name %>
-        <%= f.select :venue_id, @venues %>
-        <%= f.select :category_id, @categories %>
-        <%= f.date_field :date %>
-        <%= f.submit 'Crear' %>
+    <div class="mb-3">
+        <%= f.text_field :name, class: 'form-control', placeholder: 'Nombre' %>
+    </div>
+    <div class="mb-3">
+        <%= f.select :venue_id, @venues, class: 'form-select' %>
+    </div>
+    <div class="mb-3">
+        <%= f.select :category_id, @categories, class: 'form-select' %>
+    </div>
+    <div class="mb-3">
+        <%= f.date_field :date, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+        <%= f.submit 'Crear', class: 'btn btn-primary' %>
+    </div>
     <% end %>
 </div>
