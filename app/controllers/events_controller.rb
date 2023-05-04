@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+    before_action :find_event, only: [:show, :edit, :update, :destroy]
+    before_action :map_venues_and_categories, only: [:new, :edit]
+
     def new
         @event = Event.new
     end
@@ -8,11 +11,9 @@ class EventsController < ApplicationController
     end
 
     def show
-        @event = Event.find params[:id]
     end
 
     def edit
-        @event = Event.find params[:id]
     end
 
     def create
@@ -25,7 +26,6 @@ class EventsController < ApplicationController
     end
 
     def update
-        @event = Event.find params[:id]
         if @event.update event_params
             redirect_to @event, notice: 'Evento creado con éxito'
         else
@@ -34,7 +34,6 @@ class EventsController < ApplicationController
     end
 
     def destroy
-        @event = Event.find params[:id]
         @event.destroy
         redirect_to events_path
     end
@@ -42,5 +41,14 @@ class EventsController < ApplicationController
     private
     def event_params
         params.require(:event).permit(:name, :venue_id, :category_id, :date)
+    end
+
+    def find_event
+        @event = Event.find params[:id]
+    end
+
+    def map_venues_and_categories
+        @venues = Venue.all.map {|v| [v.name, v.id]}
+        @categories = Category.all.map {|v| [v.name, v.id]}
     end
 end
