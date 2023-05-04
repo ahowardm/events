@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>Ubicación: <%=  @venue.name %></h1>
+</div>
+
+<div class="container">
+    <h3>Eventos en el lugar:</h3>
+    <ul>
+        <% @events.each do |event| %>
+            <li><%= event.name %></li>
+        <% end %>
+    </ul>
+</div>
